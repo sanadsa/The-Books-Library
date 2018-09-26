@@ -7,7 +7,6 @@ import { Http } from '../../node_modules/@angular/http';
 })
 export class BookService {
   private url = 'http://my-json-server.typicode.com/sanadsa/test-json/books';
-  // private url = 'http://shypeacock.com/Sanad/db%20-%20Copy.json';
   constructor(private http: Http) { }
 
   getBooks() {

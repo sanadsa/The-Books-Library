@@ -1,3 +1,15 @@
 .btn {
     font-size: 17px;
 }
+
+.modal-body {
+    background: burlywood;
+}
+
+.modal-footer {
+    background: burlywood;
+}
+
+.modal-header {
+    background: chocolate;
+}

@@ -1,21 +1,18 @@
 import { PopupComponent } from './../popup/popup.component';
 import { BookService } from './../book.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from './book';
-import { FormGroup, FormBuilder, Validators, FormControl, ValidationErrors, AbstractControl } from '../../../node_modules/@angular/forms';
-import { reject } from '../../../node_modules/@types/q';
+import { FormGroup, FormBuilder, Validators, FormControl, ValidationErrors } from '../../../node_modules/@angular/forms';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'book',
+  selector: 'books',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
   booksList: Array<Book>;
   form: FormGroup;
-  book1 = new Book(1, 'Alex' , 'Larson' , new Date);
-  titles: Array<string>;
 
   constructor(private service: BookService, private fb: FormBuilder) {
     this.booksList = new Array<Book>();
@@ -76,7 +73,7 @@ export class BookComponent implements OnInit {
       let index = this.booksList.indexOf(book);
       this.booksList[index] = updatedBook;
     });
-    this.form.reset();
+    // this.form.reset();
     PopupComponent.closeModal();
   }
 }
