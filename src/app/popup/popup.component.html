@@ -1,0 +1,23 @@
+<button type="button" class="btn btn-primary"
+ [style.background]="'brown'"
+  (click)="openModal(template)">
+  {{ buttonName }}
+</button>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ title }}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>  
+  <div class="modal-body">
+    <ng-content></ng-content>    
+  </div>
+  <div class="modal-footer">            
+    <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Cancel</button>    
+  </div>
+</ng-template>
+    
+
+          

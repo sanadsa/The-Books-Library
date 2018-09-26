@@ -1,0 +1,86 @@
+<div class="bg">
+<popup title="Add Book" buttonName="Add new book">    
+  <form [formGroup]="form">
+      <div class="form-group">
+        <label for="">Book Title</label>
+        <input formControlName="bookTitle" type="text" class="form-control">
+        <div 
+          *ngIf="bookTitle.touched && bookTitle.invalid"
+          class="aler alert-danger">
+          <div *ngIf="bookTitle.errors.required">Title is required</div>        
+          <div *ngIf="bookTitle.errors.existingTitle">Title should be unique</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Author Name</label>
+        <input formControlName="authorName" type="text" class="form-control">
+        <div 
+          *ngIf="authorName.touched && authorName.invalid"
+          class="aler alert-danger">
+          Author name required
+        </div>
+      </div>  
+      <div class="form-group">
+          <label for="">Published Date</label>
+          <input formControlName="publishedDate" type="date" class="form-control">
+          <div 
+            *ngIf="publishedDate.touched && publishedDate.invalid"
+            class="aler alert-danger">
+            valid date is required
+          </div>
+        </div>   
+      <button class="btn btn-primary" (click)="addBook(form.value)" [disabled]="!form.valid">Add Book</button>
+    </form>
+</popup>
+<br><br>
+
+<div *ngFor="let b of booksList">
+  <tab title="{{ b.bookTitle | nonEnglish | titlecase }}">        
+    ID: {{ b.id }}
+    <br>
+    Author: {{ b.authorName }}
+    <br>
+    Publish Date: {{ b.publishedDate }}    
+    <span>
+      <popup class="tab-popup" title="Delete book" buttonName="Delete">
+        Are you sure you want to delete {{ b.bookTitle }}?
+          <button (click)=deleteBook(b) class="btn btn-primary">Ok</button>
+      </popup>      
+    </span>    
+      <popup class="tab-popup" title="Edit Selected Book" buttonName="Edit">
+          <form [formGroup]="form">
+              <div class="form-group">
+                <label for="">Book Title</label>
+                <input formControlName="bookTitle" type="text" class="form-control" value="b.bookTitle">
+                <div 
+                  *ngIf="bookTitle.touched && bookTitle.invalid"
+                  class="aler alert-danger">
+                  <div *ngIf="bookTitle.errors.required">Title is required</div>        
+                  <div *ngIf="bookTitle.errors.existingTitle">Title should be unique</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Author Name</label>
+                <input formControlName="authorName" type="text" class="form-control" value="b.authorName">
+                <div 
+                  *ngIf="authorName.touched && authorName.invalid"
+                  class="aler alert-danger">
+                  Author name required
+                </div>
+              </div>  
+              <div class="form-group">
+                  <label for="">Published Date</label>
+                  <input formControlName="publishedDate" type="date" class="form-control" value="b.publishedDate">
+                  <div 
+                    *ngIf="publishedDate.touched && publishedDate.invalid"
+                    class="aler alert-danger">
+                    valid date required
+                  </div>
+                </div>   
+              <button class="btn btn-primary" (click)="updateBook(form.value, b)" [disabled]="!form.valid">Save</button>
+            </form>
+      </popup>            
+  </tab> 
+  <br>
+</div>  
+</div>

@@ -1,0 +1,17 @@
+<div class="tab">
+  <div 
+    class="tab-heading" 
+    (click)=Expand()
+    [class.expanded]="isExpanded">
+    {{ title }}
+    <span class="glyphicon"
+          [ngClass]="{
+            'glyphicon-chevron-up': isExpanded,
+            'glyphicon-chevron-down': !isExpanded
+          }">      
+    </span>    
+  </div>
+  <div class="tab-body" *ngIf="isExpanded">
+    <ng-content></ng-content>
+  </div>
+</div>

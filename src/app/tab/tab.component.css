@@ -1,0 +1,24 @@
+.tab {    
+    border: 1px solid #ccc;
+    border-radius: 2px;    
+}
+
+.tab-heading {
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    background: burlywood;
+}
+
+.tab-heading:hover {
+    background: rgb(255, 208, 0);
+}
+
+.tab-body {
+    padding: 20px;
+    background: chocolate;
+}
+
+.glyphicon {
+    float: right;
+}
