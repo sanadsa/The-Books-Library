@@ -52,6 +52,7 @@ export class BookComponent implements OnInit {
         book.id = index + 1;
         this.booksList.splice(0, 0, book);
       });
+      this.booksList.splice(0, 0, book);
       this.form.reset();
       PopupComponent.closeModal();
   }
